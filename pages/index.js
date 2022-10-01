@@ -2,7 +2,7 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
 import Results from "../components/Results";
-import Request from "../utils/Request";
+import request from "../utils/request";
 
 export default function Home({ results }) {
   return (
@@ -23,14 +23,14 @@ export default function Home({ results }) {
 export const getServerSideProps = async (context) => {
   const genre = context.query.genre;
 
-  const request = await fetch(
+  const requests = await fetch(
     `https://api.themoviedb.org/3${
-      Request[genre]?.url || Request.fetchTopRated.url
+      request[genre]?.url || request.fetchTopRated.url
     }`
   ).then((res) => res.json());
   return {
     props: {
-      results: request.results,
+      results: requests.results,
     },
   };
 };

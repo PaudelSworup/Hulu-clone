@@ -1,5 +1,5 @@
 import React from "react";
-import Request from "../utils/Request";
+import request from "../utils/request";
 import { useRouter } from "next/router";
 
 const Nav = () => {
@@ -7,7 +7,7 @@ const Nav = () => {
   return (
     <nav className="relative">
       <div className="flex p-5 px-10 sm:px-20 text-2xl whitespace-nowrap space-x-10 sm:space-x-20 overflow-x-scroll scrollbar-hide ">
-        {Object.entries(Request).map(([key, { url, title }]) => {
+        {Object.entries(request).map(([key, { url, title }]) => {
           return (
             <h2
               onClick={() => router.push(`/?genre=${key}`)}
